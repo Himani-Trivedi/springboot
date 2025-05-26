@@ -18,7 +18,7 @@ public class CurrencyController {
     @GetMapping("/convertCurrency")
     public String convertCurrency(@RequestParam String from, @RequestParam String to, @RequestParam Double amount){
         log.info(from + to + amount);
-        currencyConverterService.storeCurrencyList();
+//        currencyConverterService.storeCurrencyList();
         return "Hello";
     }
 
