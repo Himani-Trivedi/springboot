@@ -15,15 +15,15 @@ public class CurrencyController {
         this.currencyConverterService = currencyConverterService;
     }
 
-    @GetMapping("/convertCurrency")
+    @GetMapping("/currencies")
     public String convertCurrency(@RequestParam String from, @RequestParam String to, @RequestParam Double amount){
-        log.info(from + to + amount);
-//        currencyConverterService.storeCurrencyList();
+        currencyConverterService.storeCurrencyList();
         return "Hello";
     }
 
-    @GetMapping("/check")
-    public String check(@PathVariable(required = false) String from, @PathVariable(required = false) String to, @PathVariable(required = false) Double amount){
-        return "Hello";
+    @GetMapping("/convertCurrency")
+    public String check(@RequestParam String from, @RequestParam String to, @RequestParam Double amount){
+        Double convertedValue = currencyConverterService.convertCurrency(from, to, amount);
+        return convertedValue.toString();
     }
 }
